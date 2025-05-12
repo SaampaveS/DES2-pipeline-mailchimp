@@ -9,7 +9,7 @@ load_dotenv()
 
 api_key=os.getenv('MAILCHIMP_API_KEY')
 
-#set date fields
+#set date fields: this is what we will use to filter the data which is brought in
 start_date = '2025-01-01'
 end_date = datetime.datetime.now()
 start_date_time = start_date +'T00:00:00'
@@ -25,6 +25,7 @@ else:
 
 # Build a set of existing campaign ids which already exist in your json file
 existing_ids = {c['id'] for c in existing_campaigns}
+
 
 try:
     client = MailchimpMarketing.Client()
