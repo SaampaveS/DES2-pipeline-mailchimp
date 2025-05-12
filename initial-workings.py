@@ -15,7 +15,7 @@ end_date = datetime.datetime.now()
 start_date_time = start_date +'T00:00:00'
 end_date_time = end_date.strftime('%Y-%m-%d') + 'T23:59:59'
 
-#loads the existing data
+#sets a file name and checks the file exists, if it does it opens the file in read mode otherwise sets existing campaigns to an empty list
 json_filename = 'mailchimp_campaigns.json'
 if os.path.isfile(json_filename):
     with open(json_filename, 'r') as f:
