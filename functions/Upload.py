@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 # Load .env file
 load_dotenv()
 
-def upload_to_s3(aws_access_key,aws_secret_key, local_file, bucket_name, bucket_file_path, bucket_filename):
+def upload_to_s3(aws_access_key,aws_secret_key, local_file, bucket_name,  bucket_filename):
 
     # Create S3 Client using AWS Credentials
     s3_client = boto3.client(

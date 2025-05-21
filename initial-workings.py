@@ -66,6 +66,10 @@ bucket_name=os.getenv('aws_bucket')
 
 for file in onlyfiles:
 
-    local_file = my_path+'/'+filename
-    bucket_filename = bucket_file_path+'/campaign/'+ local_file
-    upload_to_s3(aws_access_key,aws_secret_key, local_file, bucket_name, bucket_file_path, bucket_filename)
+    local_file = my_path+'/'+file
+    bucket_filename = bucket_file_path+'/campaign/'+ file
+    upload_to_s3(aws_access_key,aws_secret_key, local_file, bucket_name, bucket_filename)
+
+
+
+    
