@@ -13,7 +13,7 @@ api_key=os.getenv('MAILCHIMP_API_KEY')
 
 all_campaigns = []
 offset = 0
-count = 100 
+count = 1000
 
 try:
     client = MailchimpMarketing.Client()
@@ -22,25 +22,26 @@ try:
     # "start" : start_date,
     # "end" : end_date
   })
+    
+    while True:   
+    #
+        response = client.campaigns.list(  
+            offset=offset, 
+            count=count
+        )
+
+        campaigns = response.get('campaigns', [])
+        all_campaigns.extend(campaigns)
+
+        if len(campaigns) < count:
+            break
+        offset += count
+
+    #Save the campaigns data to a JSON file
+    with open('mailchimp_campaigns_ful.json', 'w') as f:
+        json.dump(campaigns, f, indent=4)
+
+        print(f"Exported {len(campaigns)} campaigns to mailchimp_campaigns.json")
+
 except ApiClientError as error:
     print("Error: {}".format(error.text))
-    
-while True:   
-#filter to limit the data extracted to for this year
-    response = client.campaigns.list(  
-        offset=offset, 
-        count=count
-      )
-
-    campaigns = response.get('campaigns', [])
-    if not campaigns:
-        break
-    all_campaigns.extend(campaigns)
-    offset += count
-
-#Save the campaigns data to a JSON file
-with open('mailchimp_campaigns.json', 'w') as f:
-    json.dump(campaigns, f, indent=4)
-
-    print(f"Exported {len(campaigns)} campaigns to mailchimp_campaigns.json")
-
