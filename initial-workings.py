@@ -59,10 +59,10 @@ except ApiClientError as error:
 my_path = save_folder
 onlyfiles = [f for f in listdir(my_path) if isfile(join(my_path,f))]
 
-bucket_file_path = os.getenv('aws_bucket_filepath')
-aws_access_key=os.getenv('aws_access_key')
-aws_secret_key=os.getenv('aws_secret_key')
-bucket_name=os.getenv('aws_bucket')
+bucket_file_path = os.getenv('AWS_BUCKET_FILEPATH')
+aws_access_key=os.getenv('AWS_ACCESS_KEY')
+aws_secret_key=os.getenv('AWS_SECRET_KEY')
+bucket_name=os.getenv('AWS_BUCKET')
 
 for file in onlyfiles:
 

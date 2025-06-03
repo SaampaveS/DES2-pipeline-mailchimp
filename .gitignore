@@ -1,4 +1,6 @@
 .venv
-.env
-*.json
+*.env*
+*.json*
 last_create_time.txt
+*docker*
+*_pycache_*
